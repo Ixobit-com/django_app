@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <form style="display: flex; flex-direction: column; max-width: 300px; margin: 0 auto" method="post" action="{% url "create_post" %}">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

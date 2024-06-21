@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <a href="{% url "create_post" %}">Create new</a>
+    <hr>
+    {% for post in object_list %}
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.text }}</p>
+        <p>{{ post.created_at }}</p>
+        <form method="post" action="{% url "delete_post" post.pk %}">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+        <hr>
+    {% endfor %}
+{% endblock %}
